@@ -35,6 +35,11 @@ export const createChangeAnswer = (question, answer) => ({
     answer,
 });
 
+const CLEAR_FIELDS = 'CLEAR_FIELDS';
+export const createClearFields = () => ({
+    type: CLEAR_FIELDS,
+});
+
 export default (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_ANSWER:
@@ -67,6 +72,8 @@ export default (state = initialState, action) => {
                     incorrect: action.incorrect,
                 },
             };
+        case CLEAR_FIELDS:
+            return initialState;
         default:
             return state;
     }

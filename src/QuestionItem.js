@@ -14,7 +14,7 @@ const styles = {
         borderLeft: error ? '2px solid red' : '2px solid transparent',
         display: 'flex',
         flexDirection: 'column',
-        margin: '12px 0',
+        marginBottom: 12,
         overflow: 'hidden',
         width: '100%',
     }),
@@ -46,9 +46,9 @@ const QuestionItem = ({
             </div>
             <div style={styles.optionsWrapper}>
                 <select
-                    defaultValue={''}
                     style={styles.options}
-                    value={answer}
+                    value={answer ? answer : ''}
+                    selected="1"
                     onChange={(e) => {
                         onChangeAnswer(index, e.target.value);
                     }}>

@@ -9,11 +9,12 @@ import {
 import {
     createAnswerErrorChange,
     createChangeResult,
+    createClearFields,
 } from './store/results';
 
 const styles = {
     root: {
-        margin: '0 16px',
+        margin: '0 12px',
     },
     buttons: {
         display: 'flex',
@@ -40,14 +41,15 @@ const QuestionsPane = ({questions, onClear, onSubmit}) => (
         }
         <div style={styles.buttons}>
             <button
-                style={{ ...styles.button, marginRight: 4 }}
+                style={{...styles.button, marginRight: 4}}
                 onClick={() => {
                     onSubmit(questions);
                 }}>
                 Submit
             </button>
             <button
-                style={{ ...styles.button, marginLeft: 4 }}>
+                style={{...styles.button, marginLeft: 4}}
+                onClick={onClear}>
                 Clear Values
             </button>
         </div>
@@ -65,7 +67,9 @@ const mapStateToProps = ({results: {questions}}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onClear: () => { },
+    onClear: () => {
+        dispatch(createClearFields());
+    },
     onSubmit: (questions) => {
         let total = 0;
         let correct = 0;
