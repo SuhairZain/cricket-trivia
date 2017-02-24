@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "cricket-trivia",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple quiz to test your cricket knowledge",
   "main": "index.js",
   "scripts": {
     "dev": "webpack",
