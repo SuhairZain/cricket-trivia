@@ -21,7 +21,7 @@ const styles = {
     title: {
         fontSize: '2em',
         fontWeight: 100,
-        marginBottom: 48,
+        margin: '48px 0px',
     },
 };
 
