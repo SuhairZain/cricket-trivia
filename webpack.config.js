@@ -10,7 +10,7 @@ const env = require('get-env')();
 const PROD = env === 'prod';
 
 const links = [
-    'https://fonts.googleapis.com/css?family=Open+Sans',
+    'https://fonts.googleapis.com/css?family=Roboto:100,400',
     `${PROD ? '' : '/'}css/styles.css`,
 ];
 
