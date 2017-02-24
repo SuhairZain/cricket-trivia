@@ -1,13 +1,17 @@
+/* eslint-env commonjs*/
+
 const fs = require('fs');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const PROD = JSON.parse(process.env.PROD_ENV || '0');
+const env = require('get-env')();
+
+const PROD = env === 'prod';
 
 const links = [
     'https://fonts.googleapis.com/css?family=Open+Sans',
-    `${PROD ? '' : '/'}css/styles.css`
+    `${PROD ? '' : '/'}css/styles.css`,
 ];
 
 const plugins = [
@@ -15,8 +19,8 @@ const plugins = [
         filename: '../index.html',
         links: links,
         template: 'index-file-template.ejs',
-        title: "Title"
-    })
+        title: 'Title',
+    }),
 ];
 
 const outputDir = 'dist';
@@ -29,18 +33,18 @@ if (PROD) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false
+                warnings: false,
             },
             output: {
-                comments: false
-            }
+                comments: false,
+            },
         })
     );
     plugins.push(
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
+                'NODE_ENV': JSON.stringify('production'),
+            },
         })
     );
     plugins.push(new webpack.optimize.DedupePlugin());
@@ -52,17 +56,17 @@ module.exports = {
     output: {
         path: './dist',
         publicPath: `${PROD ? '' : '/'}dist/`,
-        filename: `bundle${PROD ? '_' + new Date().getTime() : ''}.js`
+        filename: `bundle${PROD ? '_' + new Date().getTime() : ''}.js`,
     },
     module: {
         loaders: [{
             test: /\.jsx?$/,
             loader: 'babel-loader',
-            exclude: /node_modules/
+            exclude: /node_modules/,
         }, {
             test: /\.css$/,
-            loaders: ['style', 'css']
-        }]
+            loaders: ['style', 'css'],
+        }],
     },
-    plugins: plugins
+    plugins: plugins,
 };

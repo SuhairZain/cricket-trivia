@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 import {
     COLOR_BG,
-    COLOR_TEXT
-} from './utils/colors.js'
+    COLOR_TEXT,
+} from './utils/colors.js';
 
 const styles = {
     root: {
@@ -13,11 +13,11 @@ const styles = {
         flexDirection: 'column',
         height: '100%',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
     },
     title: {
-        color: COLOR_TEXT
-    }
+        color: COLOR_TEXT,
+    },
 };
 
 const App = () => (

@@ -1940,6 +1940,12 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
+get-env@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/get-env/-/get-env-0.5.10.tgz#5f431736a7bffdb9a956be32a33056ae65a3c400"
+  dependencies:
+    lodash "^4.16.6"
+
 getpass@^0.1.1:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.6.tgz#283ffd9fc1256840875311c1b60e8c40187110e6"
@@ -2473,7 +2479,7 @@ lodash.pickby@^4.0.0, lodash.pickby@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.pickby/-/lodash.pickby-4.6.0.tgz#7dea21d8c18d7703a27c704c15d3b84a67e33aff"
 
-lodash@^4.0.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.16.6, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 

@@ -1,7 +1,9 @@
-import React from 'react'
-import { render } from 'react-dom'
+/* eslint-env browser */
 
-import App from './App.jsx'
+import React from 'react';
+import {render} from 'react-dom';
+
+import App from './App.jsx';
 
 render(
     <App></App>,
