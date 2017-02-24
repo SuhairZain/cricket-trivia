@@ -30,7 +30,8 @@ body {
     width: 100%;
 }
 
-.question-pane {
+.questions-pane {
+    margin: 0 12px 24px;
     width: calc(100% - 2px),
 }
 
@@ -44,7 +45,8 @@ body {
         flex-direction: row;
         width: 100%;
     }
-    .question-pane {
+    .questions-pane {
+        margin: 0 12px;
         width: 50%,
     }
     .results-pane {

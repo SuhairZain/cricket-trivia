@@ -13,9 +13,6 @@ import {
 } from './store/results';
 
 const styles = {
-    root: {
-        margin: '0 12px 24px 12px',
-    },
     buttons: {
         display: 'flex',
     },
@@ -27,7 +24,7 @@ const styles = {
 import QuestionItem from './QuestionItem';
 
 const QuestionsPane = ({questions, onClear, onSubmit}) => (
-    <div className="questions-pane" style={styles.root}>
+    <div className="questions-pane">
         {
             Object.keys(questions).map((key, i) => (
                 <QuestionItem
