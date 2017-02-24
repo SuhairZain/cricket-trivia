@@ -1,3 +1,3 @@
-# TEMPLATE
+# Cricket Trivia
 
-Edit the contents for the project
+Available at [http://suhairzain.com/cricket-trivia](http://suhairzain.com/cricket-trivia).
