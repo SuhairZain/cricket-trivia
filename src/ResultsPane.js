@@ -41,8 +41,6 @@ const options = {
     scales: {
         yAxes: [{
             ticks: {
-                max: 4,
-                min: 0,
                 stepSize: 0.5,
             },
         }],

@@ -6,7 +6,7 @@ export default [
             '2012',
             '2016',
         ],
-        answer: 1,
+        correctAnswer: '2012',
     },
     {
         question: 'Who has won the most number of Cricket World Cups?',
@@ -15,6 +15,6 @@ export default [
             'India',
             'England',
         ],
-        answer: 1,
+        correctAnswer: 'Australia',
     },
 ];

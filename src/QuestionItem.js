@@ -1,14 +1,23 @@
 import React, {PropTypes} from 'react';
 
+import {
+    connect,
+} from 'react-redux';
+
+import {
+    createChangeAnswer,
+} from './store/results';
+
 const styles = {
-    root: {
+    root: (error) => ({
         borderRadius: 2,
+        borderLeft: error ? '2px solid red' : '2px solid transparent',
         display: 'flex',
         flexDirection: 'column',
         margin: '12px 0',
         overflow: 'hidden',
         width: '100%',
-    },
+    }),
     questionWrapper: {
         backgroundColor: '#4A4A4A',
         padding: '4px 16px 4px 8px',
@@ -26,25 +35,50 @@ const styles = {
     },
 };
 
-const QuestionItem = ({question, index, options}) => (
-    <div style={styles.root}>
-        <div style={styles.questionWrapper}>
-            <span style={styles.question}>{`${index + 1}. ${question}`}</span>
+const QuestionItem = ({
+    answer, error, question, index, options, onChangeAnswer,
+}) => (
+        <div style={styles.root(error)}>
+            <div style={styles.questionWrapper}>
+                <span style={styles.question}>{
+                    `${index + 1}. ${question}`
+                }</span>
+            </div>
+            <div style={styles.optionsWrapper}>
+                <select
+                    defaultValue={''}
+                    style={styles.options}
+                    value={answer}
+                    onChange={(e) => {
+                        onChangeAnswer(index, e.target.value);
+                    }}>
+                    <option hidden></option>
+                    {
+                        options.map((option, i) => (
+                            <option key={i}>{option}</option>
+                        ))
+                    }
+                </select>
+            </div>
         </div>
-        <div style={styles.optionsWrapper}>
-            <select style={styles.options}>{
-                options.map((option, i) => (
-                    <option key={i}>{option}</option>
-                ))
-            }</select>
-        </div>
-    </div>
-);
+    );
 
 QuestionItem.propTypes = {
+    answer: PropTypes.string,
+    error: PropTypes.bool.isRequired,
     question: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onChangeAnswer: PropTypes.func.isRequired,
 };
 
-export default QuestionItem;
+const mapDispatchToProps = (dispatch) => ({
+    onChangeAnswer: (question, answer) => {
+        dispatch(createChangeAnswer(`q_${question}`, answer));
+    },
+});
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(QuestionItem);

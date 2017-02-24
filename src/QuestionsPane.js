@@ -1,4 +1,15 @@
-import React from 'react';
+import React, {
+    PropTypes,
+} from 'react';
+
+import {
+    connect,
+} from 'react-redux';
+
+import {
+    createAnswerErrorChange,
+    createChangeResult,
+} from './store/results';
 
 const styles = {
     root: {
@@ -12,28 +23,31 @@ const styles = {
     },
 };
 
-import Data from './data';
-
 import QuestionItem from './QuestionItem';
 
-const QuestionsPane = () => (
+const QuestionsPane = ({questions, onClear, onSubmit}) => (
     <div className="questions-pane" style={styles.root}>
         {
-            Data.map(({question, options}, i) => (
+            Object.keys(questions).map((key, i) => (
                 <QuestionItem
+                    answer={questions[key].answer}
+                    error={questions[key].error}
                     key={i}
-                    question={question}
+                    question={questions[key].question}
                     index={i}
-                    options={options} />
+                    options={questions[key].options} />
             ))
         }
         <div style={styles.buttons}>
             <button
-                style={{...styles.button, marginRight: 4}}>
+                style={{ ...styles.button, marginRight: 4 }}
+                onClick={() => {
+                    onSubmit(questions);
+                }}>
                 Submit
             </button>
             <button
-                style={{...styles.button, marginLeft: 4}}>
+                style={{ ...styles.button, marginLeft: 4 }}>
                 Clear Values
             </button>
         </div>
@@ -41,6 +55,45 @@ const QuestionsPane = () => (
 );
 
 QuestionsPane.propTypes = {
+    questions: PropTypes.object.isRequired,
+    onClear: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
-export default QuestionsPane;
+const mapStateToProps = ({results: {questions}}) => ({
+    questions,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onClear: () => { },
+    onSubmit: (questions) => {
+        let total = 0;
+        let correct = 0;
+        let incorrect = 0;
+
+        const keys = Object.keys(questions);
+        keys.forEach((key) => {
+            const {answer} = questions[key];
+            if (answer) {
+                ++total;
+                if (answer === questions[key].correctAnswer)
+                    ++correct;
+                else
+                    ++incorrect;
+            }
+            dispatch(createAnswerErrorChange(
+                key,
+                !answer || answer !== questions[key].correctAnswer
+            ));
+        });
+
+        if (total === keys.length) {
+            dispatch(createChangeResult(correct, incorrect));
+        }
+    },
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(QuestionsPane);
