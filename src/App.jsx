@@ -1,14 +1,11 @@
 import React from 'react';
 
-import {
-    COLOR_BG,
-    COLOR_TEXT,
-} from './utils/colors.js';
+import QuestionsPane from './QuestionsPane';
+import ResultsPane from './ResultsPane';
 
 const styles = {
     root: {
         alignItems: 'center',
-        backgroundColor: COLOR_BG,
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -16,13 +13,21 @@ const styles = {
         width: '100%',
     },
     title: {
-        color: COLOR_TEXT,
+        fontSize: '2em',
+        fontWeight: 100,
+        marginBottom: 48,
     },
 };
 
 const App = () => (
     <div style={styles.root}>
-        <span style={styles.title}>Hello React!</span>
+        <span style={styles.title}>Cricket Trivia</span>
+        <div className="panes">
+            <QuestionsPane />
+            <ResultsPane
+                correct={3}
+                incorrect={1} />
+        </div>
     </div>
 );
 

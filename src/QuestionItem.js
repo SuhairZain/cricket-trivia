@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 const styles = {
     root: {
@@ -33,8 +33,8 @@ const QuestionItem = ({question, index, options}) => (
         </div>
         <div style={styles.optionsWrapper}>
             <select style={styles.options}>{
-                options.map((option) => (
-                    <option>{option}</option>
+                options.map((option, i) => (
+                    <option key={i}>{option}</option>
                 ))
             }</select>
         </div>

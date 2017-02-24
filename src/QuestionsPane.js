@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const styles = {
     root: {
@@ -16,25 +16,31 @@ import Data from './data';
 
 import QuestionItem from './QuestionItem';
 
-const QuestionsPane = ({prop}) => (
-    <div style={styles.root}>
+const QuestionsPane = () => (
+    <div className="questions-pane" style={styles.root}>
         {
             Data.map(({question, options}, i) => (
                 <QuestionItem
+                    key={i}
                     question={question}
                     index={i}
                     options={options} />
             ))
         }
         <div style={styles.buttons}>
-            <button style={{ ...styles.button, marginRight: 4 }}>SUBMIT</button>
-            <button style={{ ...styles.button, marginLeft: 4 }}>RESET</button>
+            <button
+                style={{...styles.button, marginRight: 4}}>
+                Submit
+            </button>
+            <button
+                style={{...styles.button, marginLeft: 4}}>
+                Clear Values
+            </button>
         </div>
     </div >
 );
 
 QuestionsPane.propTypes = {
-    prop: PropTypes.string.isRequired,
 };
 
 export default QuestionsPane;
