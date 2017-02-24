@@ -13,6 +13,7 @@ const styles = {
         alignItems: 'flex-end',
         backgroundColor: '#fff',
         borderRadius: 4,
+        boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.7)',
         display: 'flex',
         justifyContent: 'center',
     },

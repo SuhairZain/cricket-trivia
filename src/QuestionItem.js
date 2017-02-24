@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import {
     connect,
@@ -9,15 +9,15 @@ import {
 } from './store/results';
 
 const styles = {
-    root: (error) => ({
+    root: {
         borderRadius: 2,
-        borderLeft: error ? '2px solid red' : '2px solid transparent',
+        boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.7)',
         display: 'flex',
         flexDirection: 'column',
         marginBottom: 12,
         overflow: 'hidden',
         width: '100%',
-    }),
+    },
     questionWrapper: {
         backgroundColor: '#4A4A4A',
         padding: '4px 16px 4px 8px',
@@ -26,10 +26,11 @@ const styles = {
         color: 'white',
         fontSize: '0.8em',
     },
-    optionsWrapper: {
+    optionsWrapper: (error) => ({
         backgroundColor: '#F5F5F5',
+        borderLeft: error ? '2px solid red' : '2px solid transparent',
         padding: '16px 0 16px 16px',
-    },
+    }),
     options: {
         width: 160,
     },
@@ -38,13 +39,13 @@ const styles = {
 const QuestionItem = ({
     answer, error, question, index, options, onChangeAnswer,
 }) => (
-        <div style={styles.root(error)}>
+        <div style={styles.root}>
             <div style={styles.questionWrapper}>
                 <span style={styles.question}>{
                     `${index + 1}. ${question}`
                 }</span>
             </div>
-            <div style={styles.optionsWrapper}>
+            <div style={styles.optionsWrapper(error)}>
                 <select
                     style={styles.options}
                     value={answer ? answer : ''}
