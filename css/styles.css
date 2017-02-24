@@ -58,8 +58,11 @@ body {
     }
 }
 
-@media only screen and (min-width: 1024px) {
+
+/* Increased from 1024 to 1050 to accomodate Sachin's question */
+
+@media only screen and (min-width: 1050px) {
     .panes {
-        width: 1024px;
+        width: 1050px;
     }
 }
