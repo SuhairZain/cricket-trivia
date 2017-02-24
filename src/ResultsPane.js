@@ -11,6 +11,8 @@ const BarChart = require('react-chartjs').Bar;
 const styles = {
     root: {
         alignItems: 'flex-end',
+        backgroundColor: '#fff',
+        borderRadius: 4,
         display: 'flex',
         justifyContent: 'center',
     },

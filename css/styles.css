@@ -31,11 +31,12 @@ body {
 }
 
 .question-pane {
-    width: 100%,
+    width: calc(100% - 2px),
 }
 
 .results-pane {
-    width: 100%;
+    margin: 24px 12px;
+    width: calc(100% - 24px);
 }
 
 @media only screen and (min-width: 720px) {
@@ -47,6 +48,7 @@ body {
         width: 50%,
     }
     .results-pane {
+        margin: 0;
         width: 50%;
     }
 }
