@@ -32,7 +32,7 @@ export default [
         correctAnswer: 'Australia',
     },
     {
-        question: 'How many International centuries does Sachin Tendulkar have under his name ?',
+        question: 'How many International centuries does Sachin Tendulkar has under his name ?',
         options: [
             '80',
             '86',
